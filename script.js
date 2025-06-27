@@ -1,22 +1,21 @@
-﻿alert('Seja bem-vindo ao nosso jogo!');
+alert('Bem-vindo ao jogo da média!');
 
-// Gera um número secreto aleatório entre 1 e 10
-let numeroSecreto = 5;
-console.log(numeroSecreto); // (Para testes, pode remover depois)
+let quantidade = parseInt(prompt("Quantos números você deseja inserir?"));
+let soma = 0;
 
-// Variável para armazenar o chute do usuário
-let chute;
-let tentativas = 0; // Inicia o contador de tentativas
-
-while (chute != numeroSecreto) {
-  chute = parseInt(prompt('Escolha um número entre 1 e 10'));
-  tentativas++; // Soma +1 a cada tentativa
-
-  if (chute == numeroSecreto) {
-    alert(`Parabéns! Você acertou o número secreto ${numeroSecreto} na tentativa ${tentativas}.`);
-  } else if (chute > numeroSecreto) {
-    alert(`O número secreto é menor que ${chute}. Tente novamente.`);
-  } else {
-    alert(`O número secreto é maior que ${chute}. Tente novamente.`);
+if (isNaN(quantidade) || quantidade <= 0) {
+  alert("Recarregue a página e insira um número válido maior que zero.");
+} else {
+  for (let i = 1; i <= quantidade; i++) {
+    let numero = parseFloat(prompt(`Digite o número ${i}:`));
+    if (isNaN(numero)) {
+      alert("Por favor, insira um número válido.");
+      i--; 
+    } else {
+      soma += numero;
+    }
   }
+
+  let media = soma / quantidade;
+  alert(`A média dos números digitados é: ${media.toFixed(2)}`);
 }
